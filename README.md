@@ -4,7 +4,7 @@ Uma API Web moderna desenvolvida em **.NET 8** utilizando os princípios da Clea
 
 ## 📐 Diagrama de Arquitetura
 
-![Diagrama de Classes](docs/diagramas/arquitetura.puml)
+![Diagrama de Classes](arquitetura.puml)
 
 ## 🚀 Tecnologias Utilizadas
 
