@@ -1,0 +1,92 @@
+@startuml
+skinparam style strictuml
+skinparam packageStyle rectangle
+
+package "WebApiApp.Domain" {
+    abstract class Entity {
+        + int Id
+    }
+
+    class Produto {
+        + string Nome
+        + string Descricao
+        + decimal Preco
+        + string ImagemUrl
+        + int Estoque
+        + DateTime DataCadastro
+        + int CategoriaId
+        + Categoria Categoria
+        + void Update()
+    }
+
+    class Categoria {
+        + string Nome
+        + ICollection<Produto> Produtos
+    }
+
+    interface IProdutoRepository {
+        + GetProdutosAsync()
+        + GetByIdAsync()
+        + RemoveAsync()
+    }
+
+    interface ICategoriaRepository {
+        + GetCategoriasAsync()
+        + GetByIdAsync()
+        + RemoveAsync()
+    }
+
+    Entity <|-- Produto
+    Entity <|-- Categoria
+    Produto "0..*" --> "1" Categoria
+}
+
+package "WebApiApp.Application" {
+    class ProdutoDTO {
+        + int Id
+        + string Nome
+        + decimal Preco
+    }
+    
+    class CategoriaDTO {
+        + int Id
+        + string Nome
+        + string ImagemUrl
+    }
+
+    interface IProdutoService {
+        + GetProdutos()
+        + GetById()
+        + Remove()
+    }
+
+    class ProdutoService {
+        - IProdutoRepository _productRepository
+        - IMapper _mapper
+    }
+
+    IProdutoService <|.. ProdutoService
+    ProdutoService --> IProdutoRepository
+}
+
+package "WebApiApp.Infrastructure" {
+    class ApplicationDbContext {
+        + DbSet<Produto> Produtos
+        + DbSet<Categoria> Categorias
+    }
+
+    class ProdutoRepository {
+    }
+
+    IProdutoRepository <|.. ProdutoRepository
+    ProdutoRepository --> ApplicationDbContext
+}
+
+package "WebApiApp.Api" {
+    class ProdutosController {
+        - IProdutoService _produtoService
+    }
+    
+    ProdutosController --> IProdutoService
+}
+@endum
