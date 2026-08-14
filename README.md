@@ -56,16 +56,7 @@ Acesse o Swagger gerado no navegador através da porta indicada no terminal (ex:
 
 ## 🧪 Executando os Testes Unitários
 
-Caso possua a camada de testes configurada, execute todos os testes de comportamento através do comando:
-
-```bash
-dotnet test
-```
-* **WebApiApp.Tests**: Camada de testes automatizados contendo os testes de unidade para os controladores da API (Controllers) e para as regras de negocio dos servicos da aplicacao (Services).
-
-## Testes Unitarios
-
-A aplicacao conta com uma suite de testes de unidade utilizando xUnit, Moq e FluentAssertions. O ambiente simula as configuracoes do AutoMapper 15 de maneira isolada.
+A aplicação conta com uma suite de testes de unidade utilizando xUnit, Moq e FluentAssertions. O ambiente simula as configuracoes do AutoMapper 15 de maneira isolada.
 
 Para rodar todos os testes automatizados da solucao, abra o terminal na raiz do projeto e execute:
 
