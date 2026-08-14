@@ -34,7 +34,7 @@ Abra o arquivo `src/WebApiApp.Api/appsettings.json` e ajuste as credenciais do s
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=SEU_SERVIDOR;Database=WebApiAppDb;Trusted_Connection=True;TrustServerCertificate=True;"
+  "DefaultConnection": "Server=SEU_SERVIDOR;Database="DatabaseName";Trusted_Connection=True;TrustServerCertificate=True;"
 }
 ```
 
